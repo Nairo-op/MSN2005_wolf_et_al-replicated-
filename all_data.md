@@ -170,9 +170,9 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 * **Gating Kinetics:**
   * $\tau_m$:
     $$
-    \tau_m = \begin{cases} 
-    0.025 + 0.14 \cdot e^{\frac{V + 40.0}{10.0}} & \text{if } V \lt -40.0\text{ mV} \\\\ 
-    0.020 + 0.145 \cdot e^{-\frac{V + 40.0}{10.0}} & \text{if } V \ge -40.0\text{ mV} 
+    \tau_m = \begin{cases}
+    0.025 + 0.14 \cdot e^{\frac{V + 40.0}{10.0}} & \text{if } V \lt -40.0\text{ mV} \\\\
+    0.020 + 0.145 \cdot e^{-\frac{V + 40.0}{10.0}} & \text{if } V \ge -40.0\text{ mV}
     \end{cases}
     $$
   * $\tau_h$: Lookup Table (linear interpolation between $-100\text{ mV}$ and $10\text{ mV}$)
@@ -357,11 +357,11 @@ In medium spiny neurons, calcium-activated potassium channels are selectively ac
 * **Maximum Conductance (Somatic):** $\bar{g} = 1.0 \times 10^{-3}\text{ S/cm}^2$
 * **State Variables:** Three-state cyclic Markov kinetic model with fractions of Closed ($C_{\text{st}}$), Open ($O_{\text{st}}$), and Inactivated ($I_{\text{st}}$) states:
   $$
-  \begin{array}{ccc} 
-  & k_3([\text{Ca}], V) & \\\\ 
-  C_{\text{st}} & \rightleftharpoons & O_{\text{st}} \\\\ 
-  \nwarrow k_2(V) & & \swarrow k_1(V) \\\\ 
-  & I_{\text{st}} & 
+  \begin{array}{ccc}
+  & k_3([\text{Ca}], V) & \\\\
+  C_{\text{st}} & \rightleftharpoons & O_{\text{st}} \\\\
+  \nwarrow k_2(V) & & \swarrow k_1(V) \\\\
+  & I_{\text{st}} &
   \end{array}
   $$
   Subject to conservation: $C_{\text{st}} + O_{\text{st}} + I_{\text{st}} = 1.0$.
@@ -404,9 +404,9 @@ $$
 
 * **Channel Influx:**
   $$
-  \text{drive}_{\text{channel}} = \begin{cases} 
-  \frac{-\text{drive} \cdot I_{\text{Ca}}}{2 \cdot F \cdot \text{depth} \cdot F_{\text{spine}}} & \text{if } I_{\text{Ca}} \lt 0 \\\\ 
-  0 & \text{if } I_{\text{Ca}} \ge 0 
+  \text{drive}_{\text{channel}} = \begin{cases}
+  \frac{-\text{drive} \cdot I_{\text{Ca}}}{2 \cdot F \cdot \text{depth} \cdot F_{\text{spine}}} & \text{if } I_{\text{Ca}} \lt 0 \\\\
+  0 & \text{if } I_{\text{Ca}} \ge 0
   \end{cases}
   $$
 * **Michaelis-Menten Extrusion Pump:**
