@@ -166,6 +166,7 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
   0.025 + 0.14 \cdot e^{\frac{V + 40.0}{10.0}} & \text{if } V < -40.0\text{ mV} \\ 
   0.020 + 0.145 \cdot e^{-\frac{V + 40.0}{10.0}} & \text{if } V \ge -40.0\text{ mV} 
   \end{cases}$$
+
   $$\tau_h = \text{Lookup Table (linear interpolation between } -100 \text{ mV and } 10 \text{ mV)}$$
 
 #### NaP Inactivation Gating Time Constant ($\tau_h$) Lookup Table
@@ -319,9 +320,13 @@ In medium spiny neurons, calcium-activated potassium channels are selectively ac
   $$\frac{do}{dt} = \frac{o_{\infty} - o}{\tau_o}$$
 * **Transition Rates & Kinetic Equations:**
   $$\alpha = \frac{[\text{Ca}]_i \cdot a_{\text{bar}}}{[\text{Ca}]_i + K_1(V)}$$
+
   $$\beta = \frac{b_{\text{bar}}}{1 + \frac{[\text{Ca}]_i}{K_2(V)}}$$
+
   $$\tau_o = \frac{s_{\text{tau}}}{\alpha + \beta}$$
-  $$o_{\infty} = \frac{\alpha}{\alpha + \beta}$$
+
+  $$o_\infty = \frac{\alpha}{\alpha + \beta}$$
+
   where $K_i(V) = k_i \cdot e^{-\frac{2 \cdot d_i \cdot F \cdot V}{R \cdot T}}$ are voltage-dependent dissociation constants.
 * **Thermodynamic Constants:**
   * $F$ (Faraday constant) = $96.4853$ kC/eq
@@ -342,11 +347,11 @@ In medium spiny neurons, calcium-activated potassium channels are selectively ac
 ### BK Channel (`bkkca` - Large-Conductance)
 * **Maximum Conductance (Somatic):** $\bar{g} = 1.0 \times 10^{-3}$ S/cm²
 * **State Variables:** Three-state cyclic Markov kinetic model with fractions of Closed ($C_{\text{st}}$), Open ($O_{\text{st}}$), and Inactivated ($I_{\text{st}}$) states:
-  $$\begin{array}{ccc}
-  & k_3([\text{Ca}], V) & \\
-  C_{\text{st}} & \rightleftharpoons & O_{\text{st}} \\
-  \nwarrow k_2(V) & & \swarrow k_1(V) \\
-  & I_{\text{st}} &
+  $$\begin{array}{ccc} 
+  & k_3([\text{Ca}], V) & \\ 
+  C_{\text{st}} & \rightleftharpoons & O_{\text{st}} \\ 
+  \nwarrow k_2(V) & & \swarrow k_1(V) \\ 
+  & I_{\text{st}} & 
   \end{array}$$
   Subject to conservation: $C_{\text{st}} + O_{\text{st}} + I_{\text{st}} = 1.0$.
 * **Current Formula:**
@@ -357,7 +362,9 @@ In medium spiny neurons, calcium-activated potassium channels are selectively ac
   * **$k_2$ (Inactivated $\rightarrow$ Closed):** Recovery from inactivation (favored at hyperpolarized potentials).
     $$k_2 = \text{alp}(0.1, V, -120.0, -10.0) = \frac{1}{0.1 + e^{\frac{V + 120.0}{-10.0}} \cdot 1.0}$$
   * **$k_3$ (Closed $\rightarrow$ Open):** Dual voltage and cooperative calcium gating (third-order calcium dependence).
+  $k_3$ (Closed $\rightarrow$ Open): Dual voltage and cooperative calcium gating (third-order calcium dependence).
     $$k_3 = \text{alpha}(0.001, 1.0, V, -20.0, 7.0) \cdot 1.0 \times 10^8 \cdot [\text{Ca}]_i^3$$
+
     where:
     $$\text{alpha}(t_{\text{min}}, t_{\text{max}}, V, V_{\text{half}}, k) = \frac{1}{t_{\text{min}} + \frac{1}{\frac{1}{t_{\text{max}} - t_{\text{min}}} + e^{\frac{V - V_{\text{half}}}{k}}}}$$
   * **$k_4$ (Open $\rightarrow$ Closed):** Deactivation closing rate.
@@ -375,15 +382,15 @@ Each submembrane shell uses a Michaelis-Menten active extrusion pump and a passi
 
 ### Dynamical Differential Equations
 For the standard pool ($cai$):
-$$\frac{d[\text{Ca}]_i}{dt} = \text{drive}_{\text{channel}} + \text{pump} \cdot \text{drive}_{\text{pump}} + \frac{C_{\infty} - [\text{Ca}]_i}{\tau_r}$$
+$$\frac{d[\text{Ca}]_i}{dt} = \text{drive}_{\text{channel}} + \text{pump} \cdot \text{drive}_{\text{pump}} + \frac{C_\infty - [\text{Ca}]_i}{\tau_r}$$
 
 For the L/T-type pool ($cali$):
-$$\frac{d[\text{Ca}]_{\text{L},i}}{dt} = \text{drive}_{\text{channel}} + \text{pump} \cdot \text{drive}_{\text{pump}} + \frac{C_{\infty} - [\text{Ca}]_{\text{L},i}}{\tau_r}$$
+$$\frac{d[\text{Ca}]_{\text{L},i}}{dt} = \text{drive}_{\text{channel}} + \text{pump} \cdot \text{drive}_{\text{pump}} + \frac{C_\infty - [\text{Ca}]_{\text{L},i}}{\tau_r}$$
 
 ### Drive Variables & Pump Equations
 * **Channel Influx:**
   $$\text{drive}_{\text{channel}} = \begin{cases} 
-  \frac{-\text{drive} \cdot I_{\text{Ca}}}{2 \cdot F \cdot \text{depth} \cdot F_{\text{spine}}} & \text{if } I_{\text{Ca}} < 0 \\
+  \frac{-\text{drive} \cdot I_{\text{Ca}}}{2 \cdot F \cdot \text{depth} \cdot F_{\text{spine}}} & \text{if } I_{\text{Ca}} < 0 \\ 
   0 & \text{if } I_{\text{Ca}} \ge 0 
   \end{cases}$$
 * **Michaelis-Menten Extrusion Pump:**
@@ -531,7 +538,7 @@ Colocalized AMPA/NMDA (excitatory glutamatergic) synapses are targeted at spines
   * Stimulus onset delay = $100.0$ ms
   * Somatic potential measured at $t = 550.0$ ms (450 ms after stimulus onset, to capture steady-state rectifying behavior).
 * **F-I Firing Frequency Sweep (`current_volt_freq.py`):**
-  * Stimulus amplitude sweeps: 15 linear increments between $+0.15$ nA and $+0.45$ nA.
-  * Stimulus duration = $500.0$ ms
-  * Stimulus onset delay = $100.0$ ms
-  * Spike frequency calculated as $F = \frac{\text{spike\_count}}{0.5 \text{ s}}$ for spikes occurring during the injection window ($100.0$ to $600.0$ ms).
+  * Stimulus amplitude sweeps: 15 linear increments between $+0.15\text{ nA}$ and $+0.45\text{ nA}$.
+  * Stimulus duration = $500.0\text{ ms}$
+  * Stimulus onset delay = $100.0\text{ ms}$
+  * Spike frequency calculated as $F = \frac{\text{spike\_count}}{0.5\text{ s}}$ for spikes occurring during the injection window ($100.0$ to $600.0\text{ ms}$).
