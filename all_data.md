@@ -14,18 +14,8 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 * **Permeability (Somatic):** $\bar{p} = 6.0 \times 10^{-6}\text{ cm/s}$
 * **State Variables:** $m$ (activation, squared)
 * **Inactivation:** None modeled
-* **Current Formula:**
-
-  ```math
-  i_{\text{Ca}} = \bar{p} \cdot m^2 \cdot \text{ghk}(v, [\text{Ca}]_i, [\text{Ca}]_o)
-  ```
-
-* **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 9.0}{6.6}}}
-  ```
-
+* **Current Formula:** $i_{\text{Ca}} = \bar{p} \cdot m^2 \cdot \text{ghk}(v, [\text{Ca}]_i, [\text{Ca}]_o)$
+* **Steady-State Gating:** $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 9.0}{6.6}}}$
 * **Time Constant:** $\tau_m = 0.377\text{ ms}$ (constant)
 
 ---
@@ -35,39 +25,15 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 * **Permeability (Somatic):** $\bar{p} = 1.0 \times 10^{-5}\text{ cm/s}$
 * **State Variables:** $m$ (activation, squared), $h$ (inactivation)
 * **Inactivation Fraction ($a$):** 0.21 (fraction of current that inactivates; $1-a = 0.79$ is persistent)
-* **Current Formula:**
-
-  ```math
-  i_{\text{Ca}} = \bar{p} \cdot m^2 \cdot (a \cdot h + 1 - a) \cdot \text{ghk}(v, [\text{Ca}]_i, [\text{Ca}]_o)
-  ```
-
+* **Current Formula:** $i_{\text{Ca}} = \bar{p} \cdot m^2 \cdot (a \cdot h + 1 - a) \cdot \text{ghk}(v, [\text{Ca}]_i, [\text{Ca}]_o)$
 * **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 8.7}{7.4}}}
-  ```
-
-  ```math
-  h_{\infty} = \frac{1}{1 + e^{\frac{V + 74.8}{6.5}}}
-  ```
-
+  * $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 8.7}{7.4}}}$
+  * $h_{\infty} = \frac{1}{1 + e^{\frac{V + 74.8}{6.5}}}$
 * **Gating Kinetics:**
-
-  ```math
-  \alpha_m = \frac{0.1157 \cdot (V + 17.19)}{e^{\frac{V + 17.19}{15.22}} - 1}
-  ```
-
-  ```math
-  \beta_m = 1.15 \cdot e^{\frac{V}{23.82}}
-  ```
-
-  ```math
-  \tau_m = \frac{1}{\alpha_m + \beta_m}
-  ```
-
-  ```math
-  \tau_h = 23.33\text{ ms (constant)}
-  ```
+  * $\alpha_m = \frac{0.1157 \cdot (V + 17.19)}{e^{\frac{V + 17.19}{15.22}} - 1}$
+  * $\beta_m = 1.15 \cdot e^{\frac{V}{23.82}}$
+  * $\tau_m = \frac{1}{\alpha_m + \beta_m}$
+  * $\tau_h = 23.33\text{ ms}$ (constant)
 
 ---
 
@@ -75,22 +41,10 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 
 * **Permeability (Somatic):** $\bar{p} = 2.6 \times 10^{-5}\text{ cm/s}$
 * **State Variables:** $m$ (activation, cubed), $h$ (inactivation)
-* **Current Formula:**
-
-  ```math
-  i_{\text{Ca}} = \bar{p} \cdot m^3 \cdot h \cdot \text{ghk}(v, [\text{Ca}]_i, [\text{Ca}]_o)
-  ```
-
+* **Current Formula:** $i_{\text{Ca}} = \bar{p} \cdot m^3 \cdot h \cdot \text{ghk}(v, [\text{Ca}]_i, [\text{Ca}]_o)$
 * **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 10.3}{6.6}}}
-  ```
-
-  ```math
-  h_{\infty} = \frac{1}{1 + e^{\frac{V + 33.3}{17.0}}}
-  ```
-
+  * $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 10.3}{6.6}}}$
+  * $h_{\infty} = \frac{1}{1 + e^{\frac{V + 33.3}{17.0}}}$
 * **Gating Kinetics:**
   * $\tau_m = 1.7\text{ ms}$ (constant)
   * $\tau_h$: Lookup Table (linear interpolation between $-30\text{ mV}$ and $10\text{ mV}$)
@@ -111,22 +65,10 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 
 * **Permeability (Somatic):** $\bar{p} = 4.0 \times 10^{-7}\text{ cm/s}$
 * **State Variables:** $m$ (activation, cubed), $h$ (inactivation)
-* **Current Formula:**
-
-  ```math
-  i_{\text{Ca}} = \bar{p} \cdot m^3 \cdot h \cdot \text{ghk}(v, [\text{cal}]_i, [\text{cal}]_o)
-  ```
-
+* **Current Formula:** $i_{\text{Ca}} = \bar{p} \cdot m^3 \cdot h \cdot \text{ghk}(v, [\text{cal}]_i, [\text{cal}]_o)$
 * **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 51.73}{6.53}}}
-  ```
-
-  ```math
-  h_{\infty} = \frac{1}{1 + e^{\frac{V + 80.0}{6.7}}}
-  ```
-
+  * $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 51.73}{6.53}}}$
+  * $h_{\infty} = \frac{1}{1 + e^{\frac{V + 80.0}{6.7}}}$
 * **Gating Kinetics:** $\tau_m$ and $\tau_h$ are determined by linear interpolation of a lookup table between $-65\text{ mV}$ and $10\text{ mV}$ (step size $5\text{ mV}$).
 
 #### CaT Gating Time Constants ($\tau_m, \tau_h$) Lookup Table
@@ -157,39 +99,15 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 * **Permeability (Somatic):** $\bar{p} = 6.7 \times 10^{-6}\text{ cm/s}$
 * **State Variables:** $m$ (activation, squared), $h$ (inactivation)
 * **Inactivation Fraction ($a$):** 0.17
-* **Current Formula:**
-
-  ```math
-  i_{\text{Ca}} = \bar{p} \cdot m^2 \cdot (a \cdot h + 1 - a) \cdot \text{ghk}(v, [\text{cal}]_i, [\text{cal}]_o)
-  ```
-
+* **Current Formula:** $i_{\text{Ca}} = \bar{p} \cdot m^2 \cdot (a \cdot h + 1 - a) \cdot \text{ghk}(v, [\text{cal}]_i, [\text{cal}]_o)$
 * **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 8.9}{6.7}}}
-  ```
-
-  ```math
-  h_{\infty} = \frac{1}{1 + e^{\frac{V + 13.4}{11.9}}}
-  ```
-
+  * $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 8.9}{6.7}}}$
+  * $h_{\infty} = \frac{1}{1 + e^{\frac{V + 13.4}{11.9}}}$
 * **Gating Kinetics:**
-
-  ```math
-  \alpha_m = \frac{0.1194 \cdot V}{e^{\frac{V}{9.005}} - 1}
-  ```
-
-  ```math
-  \beta_m = 2.97 \cdot e^{\frac{V}{31.4}}
-  ```
-
-  ```math
-  \tau_m = \frac{1}{\alpha_m + \beta_m}
-  ```
-
-  ```math
-  \tau_h = 14.77\text{ ms (constant)}
-  ```
+  * $\alpha_m = \frac{0.1194 \cdot V}{e^{\frac{V}{9.005}} - 1}$
+  * $\beta_m = 2.97 \cdot e^{\frac{V}{31.4}}$
+  * $\tau_m = \frac{1}{\alpha_m + \beta_m}$
+  * $\tau_h = 14.77\text{ ms}$ (constant)
 
 ---
 
@@ -198,39 +116,15 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 * **Permeability (Somatic):** $\bar{p} = 4.25 \times 10^{-7}\text{ cm/s}$
 * **State Variables:** $m$ (activation, squared), $h$ (inactivation)
 * **Inactivation Fraction ($a$):** 0.17
-* **Current Formula:**
-
-  ```math
-  i_{\text{Ca}} = \bar{p} \cdot m^2 \cdot (a \cdot h + 1 - a) \cdot \text{ghk}(v, [\text{cal}]_i, [\text{cal}]_o)
-  ```
-
+* **Current Formula:** $i_{\text{Ca}} = \bar{p} \cdot m^2 \cdot (a \cdot h + 1 - a) \cdot \text{ghk}(v, [\text{cal}]_i, [\text{cal}]_o)$
 * **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 33.0}{6.7}}}
-  ```
-
-  ```math
-  h_{\infty} = \frac{1}{1 + e^{\frac{V + 13.4}{11.9}}}
-  ```
-
+  * $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 33.0}{6.7}}}$
+  * $h_{\infty} = \frac{1}{1 + e^{\frac{V + 13.4}{11.9}}}$
 * **Gating Kinetics:**
-
-  ```math
-  \alpha_m = \frac{0.1194 \cdot V}{e^{\frac{V}{9.005}} - 1}
-  ```
-
-  ```math
-  \beta_m = 2.97 \cdot e^{\frac{V}{31.4}}
-  ```
-
-  ```math
-  \tau_m = \frac{1}{\alpha_m + \beta_m}
-  ```
-
-  ```math
-  \tau_h = 14.77\text{ ms (constant)}
-  ```
+  * $\alpha_m = \frac{0.1194 \cdot V}{e^{\frac{V}{9.005}} - 1}$
+  * $\beta_m = 2.97 \cdot e^{\frac{V}{31.4}}$
+  * $\tau_m = \frac{1}{\alpha_m + \beta_m}$
+  * $\tau_h = 14.77\text{ ms}$ (constant)
 
 ---
 
@@ -240,22 +134,10 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 
 * **Maximum Conductance (Somatic):** $\bar{g} = 1.5\text{ S/cm}^2$
 * **State Variables:** $m$ (activation, cubed), $h$ (inactivation)
-* **Current Formula:**
-
-  ```math
-  i_{\text{Na}} = \bar{g} \cdot m^3 \cdot h \cdot (V - E_{\text{Na}})
-  ```
-
+* **Current Formula:** $i_{\text{Na}} = \bar{g} \cdot m^3 \cdot h \cdot (V - E_{\text{Na}})$
 * **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 23.9}{11.8}}}
-  ```
-
-  ```math
-  h_{\infty} = \frac{1}{1 + e^{\frac{V + 62.9}{10.7}}}
-  ```
-
+  * $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 23.9}{11.8}}}$
+  * $h_{\infty} = \frac{1}{1 + e^{\frac{V + 62.9}{10.7}}}$
 * **Gating Kinetics:** $\tau_m$ and $\tau_h$ are determined by linear interpolation of a lookup table between $-80\text{ mV}$ and $30\text{ mV}$ (step size $10\text{ mV}$).
 
 #### NaF Gating Time Constants ($\tau_m, \tau_h$) Lookup Table
@@ -281,32 +163,18 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 
 * **Maximum Conductance (Somatic):** $\bar{g} = 4.0 \times 10^{-5}\text{ S/cm}^2$
 * **State Variables:** $m$ (activation), $h$ (slow inactivation)
-* **Current Formula:**
-
-  ```math
-  i_{\text{Na}} = \bar{g} \cdot m \cdot h \cdot (V - E_{\text{Na}})
-  ```
-
+* **Current Formula:** $i_{\text{Na}} = \bar{g} \cdot m \cdot h \cdot (V - E_{\text{Na}})$
 * **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 52.6}{4.6}}}
-  ```
-
-  ```math
-  h_{\infty} = \frac{1}{1 + e^{\frac{V + 48.8}{10}}}
-  ```
-
+  * $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 52.6}{4.6}}}$
+  * $h_{\infty} = \frac{1}{1 + e^{\frac{V + 48.8}{10}}}$
 * **Gating Kinetics:**
   * $\tau_m$:
-
-    ```math
+    $$
     \tau_m = \begin{cases} 
-    0.025 + 0.14 \cdot e^{\frac{V + 40.0}{10.0}} & \text{if } V < -40.0\text{ mV} \\ 
+    0.025 + 0.14 \cdot e^{\frac{V + 40.0}{10.0}} & \text{if } V \lt -40.0\text{ mV} \\\\ 
     0.020 + 0.145 \cdot e^{-\frac{V + 40.0}{10.0}} & \text{if } V \ge -40.0\text{ mV} 
     \end{cases}
-    ```
-
+    $$
   * $\tau_h$: Lookup Table (linear interpolation between $-100\text{ mV}$ and $10\text{ mV}$)
 
 #### NaP Inactivation Gating Time Constant ($\tau_h$) Lookup Table
@@ -332,22 +200,10 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 
 * **Maximum Conductance (Somatic):** $\bar{g} = 0.225\text{ S/cm}^2$
 * **State Variables:** $m$ (activation, squared), $h$ (inactivation)
-* **Current Formula:**
-
-  ```math
-  i_{\text{K}} = \bar{g} \cdot m^2 \cdot h \cdot (V - E_{\text{K}})
-  ```
-
+* **Current Formula:** $i_{\text{K}} = \bar{g} \cdot m^2 \cdot h \cdot (V - E_{\text{K}})$
 * **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 10.0}{17.7}}}
-  ```
-
-  ```math
-  h_{\infty} = \frac{1}{1 + e^{\frac{V + 75.6}{10.0}}}
-  ```
-
+  * $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 10.0}{17.7}}}$
+  * $h_{\infty} = \frac{1}{1 + e^{\frac{V + 75.6}{10.0}}}$
 * **Gating Kinetics:**
   * $\tau_h = 4.67\text{ ms}$ (constant)
   * $\tau_m$: Lookup Table (linear interpolation between $-40\text{ mV}$ and $50\text{ mV}$)
@@ -374,39 +230,15 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 * **Maximum Conductance (Somatic):** $\bar{g} = 0.0104\text{ S/cm}^2$
 * **State Variables:** $m$ (activation, squared), $h$ (inactivation)
 * **Inactivation Fraction ($a$):** 0.996 (fraction of current that inactivates; $1-a = 0.004$ is persistent)
-* **Current Formula:**
-
-  ```math
-  i_{\text{K}} = \bar{g} \cdot m^2 \cdot (a \cdot h + 1 - a) \cdot (V - E_{\text{K}})
-  ```
-
+* **Current Formula:** $i_{\text{K}} = \bar{g} \cdot m^2 \cdot (a \cdot h + 1 - a) \cdot (V - E_{\text{K}})$
 * **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 27.0}{16.0}}}
-  ```
-
-  ```math
-  h_{\infty} = \frac{1}{1 + e^{\frac{V + 33.5}{21.5}}}
-  ```
-
+  * $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 27.0}{16.0}}}$
+  * $h_{\infty} = \frac{1}{1 + e^{\frac{V + 33.5}{21.5}}}$
 * **Gating Kinetics:**
-
-  ```math
-  \tau_m = 0.378 + 9.91 \cdot e^{-\left(\frac{V + 34.3}{30.1}\right)^2}
-  ```
-
-  ```math
-  \alpha_h = e^{-\frac{V + 90.96}{29.01}}
-  ```
-
-  ```math
-  \beta_h = e^{\frac{V + 90.96}{100.0}}
-  ```
-
-  ```math
-  \tau_h = \frac{1097.4}{\alpha_h + \beta_h}
-  ```
+  * $\tau_m = 0.378 + 9.91 \cdot e^{-\left(\frac{V + 34.3}{30.1}\right)^2}$
+  * $\alpha_h = e^{-\frac{V + 90.96}{29.01}}$
+  * $\beta_h = e^{\frac{V + 90.96}{100.0}}$
+  * $\tau_h = \frac{1097.4}{\alpha_h + \beta_h}$
 
 ---
 
@@ -414,18 +246,8 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 
 * **Maximum Conductance (Somatic):** $\bar{g} = 1.4 \times 10^{-4}\text{ S/cm}^2$
 * **State Variables:** $m$ (activation)
-* **Current Formula:**
-
-  ```math
-  i_{\text{K}} = \bar{g} \cdot m \cdot (V - E_{\text{K}})
-  ```
-
-* **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{\frac{V + 82.0}{13.0}}}
-  ```
-
+* **Current Formula:** $i_{\text{K}} = \bar{g} \cdot m \cdot (V - E_{\text{K}})$
+* **Steady-State Gating:** $m_{\infty} = \frac{1}{1 + e^{\frac{V + 82.0}{13.0}}}$
 * **Gating Kinetics:** $\tau_m$ is determined by linear interpolation of a lookup table between $-100\text{ mV}$ and $0\text{ mV}$.
 
 #### Kir Activation Gating Time Constant ($\tau_m$) Lookup Table
@@ -451,22 +273,10 @@ All voltage-gated calcium channels (VGCCs) use the **Goldman-Hodgkin-Katz (GHK)*
 * **Maximum Conductance (Somatic):** $\bar{g} = 0.001\text{ S/cm}^2$
 * **State Variables:** $m$ (activation), $h$ (inactivation)
 * **Inactivation Fraction ($a$):** 0.70
-* **Current Formula:**
-
-  ```math
-  i_{\text{K}} = \bar{g} \cdot m \cdot (a \cdot h + 1 - a) \cdot (V - E_{\text{K}})
-  ```
-
+* **Current Formula:** $i_{\text{K}} = \bar{g} \cdot m \cdot (a \cdot h + 1 - a) \cdot (V - E_{\text{K}})$
 * **Steady-State Gating:**
-
-  ```math
-  m_{\infty} = \frac{1}{1 + e^{-\frac{V + 13.5}{11.8}}}
-  ```
-
-  ```math
-  h_{\infty} = \frac{1}{1 + e^{\frac{V + 54.7}{18.6}}}
-  ```
-
+  * $m_{\infty} = \frac{1}{1 + e^{-\frac{V + 13.5}{11.8}}}$
+  * $h_{\infty} = \frac{1}{1 + e^{\frac{V + 54.7}{18.6}}}$
 * **Gating Kinetics:** $\tau_m$ and $\tau_h$ are determined by linear interpolation of a lookup table between $-100\text{ mV}$ and $50\text{ mV}$ (step size $5\text{ mV}$).
 
 #### Krp Gating Time Constants ($\tau_m, \tau_h$) Lookup Table
@@ -515,43 +325,17 @@ In medium spiny neurons, calcium-activated potassium channels are selectively ac
 
 * **Maximum Conductance (Somatic):** $\bar{g} = 0.145\text{ S/cm}^2$
 * **State Variables:** $o$ (open fraction gating variable, two-state Markov scheme: Closed $\leftrightarrow$ Open)
-* **Current Formula:**
-
-  ```math
-  i_{\text{K}} = \bar{g} \cdot o \cdot (V - E_{\text{K}})
-  ```
-
+* **Current Formula:** $i_{\text{K}} = \bar{g} \cdot o \cdot (V - E_{\text{K}})$
 * **Gating Differential Equation:**
-
-  ```math
+  $$
   \frac{do}{dt} = \frac{o_{\infty} - o}{\tau_o}
-  ```
-
+  $$
 * **Transition Rates & Kinetic Equations:**
-
-  ```math
-  \alpha = \frac{[\text{Ca}]_i \cdot a_{\text{bar}}}{[\text{Ca}]_i + K_1(V)}
-  ```
-
-  ```math
-  \beta = \frac{b_{\text{bar}}}{1 + \frac{[\text{Ca}]_i}{K_2(V)}}
-  ```
-
-  ```math
-  \tau_o = \frac{s_{\text{tau}}}{\alpha + \beta}
-  ```
-
-  ```math
-  o_\infty = \frac{\alpha}{\alpha + \beta}
-  ```
-
-  where:
-
-  ```math
-  K_i(V) = k_i \cdot e^{-\frac{2 \cdot d_i \cdot F \cdot V}{R \cdot T}}
-  ```
-
-  are voltage-dependent dissociation constants.
+  * $\alpha = \frac{[\text{Ca}]_i \cdot a_{\text{bar}}}{[\text{Ca}]_i + K_1(V)}$
+  * $\beta = \frac{b_{\text{bar}}}{1 + \frac{[\text{Ca}]_i}{K_2(V)}}$
+  * $\tau_o = \frac{s_{\text{tau}}}{\alpha + \beta}$
+  * $o_\infty = \frac{\alpha}{\alpha + \beta}$
+  * where $K_i(V) = k_i \cdot e^{-\frac{2 \cdot d_i \cdot F \cdot V}{R \cdot T}}$ are voltage-dependent dissociation constants.
 * **Thermodynamic Constants:**
   * $F$ (Faraday constant) = $96.4853\text{ kC/eq}$
   * $R$ (Gas constant) = $8.3144\text{ J/(mol}\cdot\text{K)}$
@@ -572,53 +356,26 @@ In medium spiny neurons, calcium-activated potassium channels are selectively ac
 
 * **Maximum Conductance (Somatic):** $\bar{g} = 1.0 \times 10^{-3}\text{ S/cm}^2$
 * **State Variables:** Three-state cyclic Markov kinetic model with fractions of Closed ($C_{\text{st}}$), Open ($O_{\text{st}}$), and Inactivated ($I_{\text{st}}$) states:
-
-  ```math
+  $$
   \begin{array}{ccc} 
-  & k_3([\text{Ca}], V) & \\ 
-  C_{\text{st}} & \rightleftharpoons & O_{\text{st}} \\ 
-  \nwarrow k_2(V) & & \swarrow k_1(V) \\ 
+  & k_3([\text{Ca}], V) & \\\\ 
+  C_{\text{st}} & \rightleftharpoons & O_{\text{st}} \\\\ 
+  \nwarrow k_2(V) & & \swarrow k_1(V) \\\\ 
   & I_{\text{st}} & 
   \end{array}
-  ```
-
+  $$
   Subject to conservation: $C_{\text{st}} + O_{\text{st}} + I_{\text{st}} = 1.0$.
-* **Current Formula:**
-
-  ```math
-  i_{\text{K}} = \bar{g} \cdot O_{\text{st}} \cdot (V - E_{\text{K}})
-  ```
-
+* **Current Formula:** $i_{\text{K}} = \bar{g} \cdot O_{\text{st}} \cdot (V - E_{\text{K}})$
 * **Transition Rate Constants:**
   * **$k_1$ (Open $\rightarrow$ Inactivated):** Rapid inactivation upon depolarization.
-
-    ```math
-    k_1 = \text{alp}(0.1, V, -10.0, 1.0) = \frac{1}{0.1 + e^{\frac{V + 10.0}{1.0}} \cdot 1.0}
-    ```
-
+    * $k_1 = \text{alp}(0.1, V, -10.0, 1.0) = \frac{1}{0.1 + e^{\frac{V + 10.0}{1.0}} \cdot 1.0}$
   * **$k_2$ (Inactivated $\rightarrow$ Closed):** Recovery from inactivation (favored at hyperpolarized potentials).
-
-    ```math
-    k_2 = \text{alp}(0.1, V, -120.0, -10.0) = \frac{1}{0.1 + e^{\frac{V + 120.0}{-10.0}} \cdot 1.0}
-    ```
-
+    * $k_2 = \text{alp}(0.1, V, -120.0, -10.0) = \frac{1}{0.1 + e^{\frac{V + 120.0}{-10.0}} \cdot 1.0}$
   * **$k_3$ (Closed $\rightarrow$ Open):** Dual voltage and cooperative calcium gating (third-order calcium dependence).
-
-    ```math
-    k_3 = \text{alpha}(0.001, 1.0, V, -20.0, 7.0) \cdot 1.0 \times 10^8 \cdot [\text{Ca}]_i^3
-    ```
-
-    where:
-
-    ```math
-    \text{alpha}(t_{\text{min}}, t_{\text{max}}, V, V_{\text{half}}, k) = \frac{1}{t_{\text{min}} + \frac{1}{\frac{1}{t_{\text{max}} - t_{\text{min}}} + e^{\frac{V - V_{\text{half}}}{k}}}}
-    ```
-
+    * $k_3 = \text{alpha}(0.001, 1.0, V, -20.0, 7.0) \cdot 1.0 \times 10^8 \cdot [\text{Ca}]_i^3$
+    * where $\text{alpha}(t_{\text{min}}, t_{\text{max}}, V, V_{\text{half}}, k) = \frac{1}{t_{\text{min}} + \frac{1}{\frac{1}{t_{\text{max}} - t_{\text{min}}} + e^{\frac{V - V_{\text{half}}}{k}}}}$
   * **$k_4$ (Open $\rightarrow$ Closed):** Deactivation closing rate.
-
-    ```math
-    k_4 = \text{alp}(0.01, V, -44.0, -5.0) = \frac{1}{0.01 + e^{\frac{V + 44.0}{-5.0}} \cdot 1.0}
-    ```
+    * $k_4 = \text{alp}(0.01, V, -44.0, -5.0) = \frac{1}{0.01 + e^{\frac{V + 44.0}{-5.0}} \cdot 1.0}$
 
 ---
 
@@ -634,34 +391,28 @@ Each submembrane shell uses a Michaelis-Menten active extrusion pump and a passi
 ### Dynamical Differential Equations
 
 For the standard pool (`cai`):
-
-```math
+$$
 \frac{d[\text{Ca}]_i}{dt} = \text{drive}_{\text{channel}} + \text{pump} \cdot \text{drive}_{\text{pump}} + \frac{C_\infty - [\text{Ca}]_i}{\tau_r}
-```
+$$
 
 For the L/T-type pool (`cali`):
-
-```math
+$$
 \frac{d[\text{Ca}]_{\text{L},i}}{dt} = \text{drive}_{\text{channel}} + \text{pump} \cdot \text{drive}_{\text{pump}} + \frac{C_\infty - [\text{Ca}]_{\text{L},i}}{\tau_r}
-```
+$$
 
 ### Drive Variables & Pump Equations
 
 * **Channel Influx:**
-
-  ```math
+  $$
   \text{drive}_{\text{channel}} = \begin{cases} 
-  \frac{-\text{drive} \cdot I_{\text{Ca}}}{2 \cdot F \cdot \text{depth} \cdot F_{\text{spine}}} & \text{if } I_{\text{Ca}} < 0 \\ 
+  \frac{-\text{drive} \cdot I_{\text{Ca}}}{2 \cdot F \cdot \text{depth} \cdot F_{\text{spine}}} & \text{if } I_{\text{Ca}} \lt 0 \\\\ 
   0 & \text{if } I_{\text{Ca}} \ge 0 
   \end{cases}
-  ```
-
+  $$
 * **Michaelis-Menten Extrusion Pump:**
-
-  ```math
+  $$
   \text{drive}_{\text{pump}} = \frac{-k_t \cdot [\text{Ca}]_i}{[\text{Ca}]_i + k_d}
-  ```
-
+  $$
 * **Dynamics Parameters:**
   * $C_{\infty}$ (equilibrium baseline concentration) = $1.0 \times 10^{-5}\text{ mM}$ ($10\text{ nM}$)
   * $\tau_r$ (exponential decay removal time constant) = $43\text{ ms}$
@@ -686,24 +437,9 @@ Excitatory (glutamatergic AMPA and NMDA) and inhibitory (GABAergic) inputs are m
 * **Decay Time Constant ($\tau_2$):** 5.75 ms
 * **Reversal Potential ($e$):** 0 mV
 * **State Equations:**
-
-  ```math
-  m' = -\frac{m}{\tau_1}, \quad h' = -\frac{h}{\tau_2}
-  ```
-
-  ```math
-  \text{NetReceive: } m = m + w \cdot f_{\text{factor}}, \quad h = h + w \cdot f_{\text{factor}}
-  ```
-
-  where:
-
-  ```math
-  t_p = \frac{\tau_1 \cdot \tau_2}{\tau_2 - \tau_1} \cdot \ln\left(\frac{\tau_2}{\tau_1}\right)
-  ```
-
-  ```math
-  f_{\text{factor}} = \frac{-1}{e^{-t_p/\tau_1} - e^{-t_p/\tau_2}}
-  ```
+  * $m' = -\frac{m}{\tau_1}, \quad h' = -\frac{h}{\tau_2}$
+  * $\text{NetReceive: } m = m + w \cdot f_{\text{factor}}, \quad h = h + w \cdot f_{\text{factor}}$
+  * where $t_p = \frac{\tau_1 \cdot \tau_2}{\tau_2 - \tau_1} \cdot \ln\left(\frac{\tau_2}{\tau_1}\right)$ and $f_{\text{factor}} = \frac{-1}{e^{-t_p/\tau_1} - e^{-t_p/\tau_2}}$
 
 ### NMDA Synapses (Excitatory with Magnesium Block)
 
@@ -713,10 +449,9 @@ Excitatory (glutamatergic AMPA and NMDA) and inhibitory (GABAergic) inputs are m
 * **Reversal Potential ($e$):** 0 mV
 * **External Magnesium Concentration ($[\text{Mg}^{2+}]_o$):** 1.0 mM
 * **Magnesium Block Function:**
-
-  ```math
+  $$
   B(V) = \frac{1}{1 + \frac{[\text{Mg}^{2+}]_o}{3.57} \cdot e^{-V \cdot 0.062}}
-  ```
+  $$
 
 ### GABA Synapses (Inhibitory)
 
@@ -834,10 +569,4 @@ Colocalized AMPA/NMDA (excitatory glutamatergic) synapses are targeted at spines
   * Stimulus amplitude sweeps: 15 linear increments between $+0.15\text{ nA}$ and $+0.45\text{ nA}$.
   * Stimulus duration = $500.0\text{ ms}$
   * Stimulus onset delay = $100.0\text{ ms}$
-  * Spike frequency calculated as:
-
-    ```math
-    F = \frac{N_{\text{spikes}}}{0.5\text{ s}}
-    ```
-
-    for spikes occurring during the injection window ($100.0\text{ ms}$ to $600.0\text{ ms}$).
+  * Spike frequency calculated as $F = \frac{N_{\text{spikes}}}{0.5\text{ s}}$ for spikes occurring during the injection window ($100.0\text{ ms}$ to $600.0\text{ ms}$).
